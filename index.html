@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -24,7 +26,7 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#f4fff4;
+background:linear-gradient(120deg,#d4fc79,#96e6a1);
 }
 
 /* NAVBAR */
@@ -76,8 +78,6 @@ font-size:55px;
 margin-bottom:10px;
 }
 
-/* SECTIONS */
-
 section{
 padding:80px 10%;
 }
@@ -89,7 +89,7 @@ font-size:35px;
 color:#0b6623;
 }
 
-/* CARDS */
+/* GLASS CARDS */
 
 .cards{
 display:flex;
@@ -98,18 +98,15 @@ flex-wrap:wrap;
 }
 
 .card{
-background:white;
+background:rgba(255,255,255,0.2);
+backdrop-filter:blur(10px);
+border-radius:15px;
 padding:30px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+box-shadow:0 8px 32px rgba(0,0,0,0.1);
+border:1px solid rgba(255,255,255,0.3);
 flex:1;
 min-width:250px;
 text-align:center;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
 }
 
 .card i{
@@ -137,6 +134,24 @@ text-align:center;
 font-size:45px;
 }
 
+/* EARTH */
+
+#earth{
+width:200px;
+height:200px;
+margin:40px auto;
+background:url("https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg");
+background-size:cover;
+border-radius:50%;
+animation:rotateEarth 20s linear infinite;
+box-shadow:0 0 40px #0f0;
+}
+
+@keyframes rotateEarth{
+0%{background-position:0 0;}
+100%{background-position:1000px 0;}
+}
+
 /* GALLERY */
 
 .gallery{
@@ -150,27 +165,18 @@ width:100%;
 border-radius:10px;
 }
 
-/* CALCULATOR */
+/* GAME */
 
-.calculator{
-max-width:500px;
-margin:auto;
-text-align:center;
+.bin{
+width:150px;
+height:150px;
+border:2px dashed #333;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-}
-
-/* QUIZ */
-
-.quiz{
-max-width:600px;
-margin:auto;
-text-align:center;
-}
+/* BUTTON */
 
 button{
 background:#0b6623;
@@ -179,9 +185,14 @@ padding:10px 20px;
 border:none;
 border-radius:5px;
 cursor:pointer;
+margin:5px;
 }
 
-/* FOOTER */
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+}
 
 footer{
 background:#111;
@@ -196,8 +207,6 @@ padding:20px;
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
 <h2>EcoWaste India</h2>
@@ -205,24 +214,37 @@ padding:20px;
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#statistics">Statistics</a></li>
-<li><a href="#calculator">Waste Calculator</a></li>
+<li><a href="#calculator">Calculator</a></li>
 <li><a href="#quiz">Quiz</a></li>
 <li><a href="#gallery">Gallery</a></li>
 </ul>
 
 </nav>
 
-<!-- HERO -->
-
 <div class="hero">
 
 <h1 data-aos="fade-up">Solid Waste Management in India</h1>
-
 <p data-aos="fade-up">Economic Impacts, Challenges & Opportunities</p>
 
 </div>
 
-<!-- ABOUT -->
+<section style="text-align:center">
+
+<h2 class="title">Our Mission</h2>
+
+<p style="max-width:800px;margin:auto;font-size:18px">
+Our mission is to spread awareness about sustainable waste management and promote a cleaner India.
+</p>
+
+</section>
+
+<section style="text-align:center;background:black;color:white">
+
+<h2>Protect Our Planet</h2>
+
+<div id="earth"></div>
+
+</section>
 
 <section id="about">
 
@@ -233,52 +255,56 @@ padding:20px;
 <div class="card" data-aos="zoom-in">
 <i class="fa-solid fa-recycle"></i>
 <h3>Recycling</h3>
-<p>Reduces landfill waste and conserves natural resources.</p>
+<p>Reduces landfill waste and conserves resources.</p>
 </div>
 
 <div class="card" data-aos="zoom-in">
 <i class="fa-solid fa-leaf"></i>
 <h3>Environment</h3>
-<p>Proper waste management protects ecosystems.</p>
+<p>Protects ecosystems and reduces pollution.</p>
 </div>
 
 <div class="card" data-aos="zoom-in">
 <i class="fa-solid fa-briefcase"></i>
 <h3>Economy</h3>
-<p>Recycling industries create employment.</p>
+<p>Creates jobs in recycling industries.</p>
 </div>
 
 </div>
 
 </section>
-
-<!-- STATS -->
 
 <section class="stats">
 
 <div class="stat">
-<h2>62M</h2>
-<p>Tonnes Waste Generated</p>
+<h2 id="w1">0</h2>
+<p>Million Tonnes Waste Generated</p>
 </div>
 
 <div class="stat">
-<h2>43M</h2>
+<h2 id="w2">0</h2>
 <p>Collected</p>
 </div>
 
 <div class="stat">
-<h2>11M</h2>
+<h2 id="w3">0</h2>
 <p>Treated</p>
 </div>
 
 <div class="stat">
-<h2>5L+</h2>
-<p>Jobs Created</p>
+<h2 id="w4">0</h2>
+<p>Million Jobs</p>
 </div>
 
 </section>
 
-<!-- CHART -->
+<section style="text-align:center">
+
+<h2 class="title">India Waste Counter</h2>
+
+<h1 id="wasteCounter">100000</h1>
+
+</section>
 
 <section id="statistics">
 
@@ -288,47 +314,65 @@ padding:20px;
 
 </section>
 
-<!-- WASTE CALCULATOR -->
-
 <section id="calculator">
 
 <h2 class="title">Household Waste Calculator</h2>
 
-<div class="calculator">
-
-<input type="number" id="people" placeholder="Number of people in house">
+<input type="number" id="people" placeholder="Number of people">
 
 <button onclick="calculateWaste()">Calculate</button>
 
 <h3 id="result"></h3>
 
-</div>
-
 </section>
-
-<!-- QUIZ -->
 
 <section id="quiz">
 
-<h2 class="title">Environmental Awareness Quiz</h2>
-
-<div class="quiz">
+<h2 class="title">Environmental Quiz</h2>
 
 <p>Which waste can be composted?</p>
 
-<button onclick="checkAnswer('plastic')">Plastic</button>
-
-<button onclick="checkAnswer('food')">Food Waste</button>
-
-<button onclick="checkAnswer('glass')">Glass</button>
+<button onclick="checkAnswer('plastic')">Plastic</button> <button onclick="checkAnswer('food')">Food Waste</button> <button onclick="checkAnswer('glass')">Glass</button>
 
 <h3 id="quizResult"></h3>
 
+</section>
+
+<section style="text-align:center;background:#f1f8e9">
+
+<h2 class="title">Waste Segregation Game</h2>
+
+<div style="display:flex;justify-content:center;gap:40px">
+
+<div id="plastic" draggable="true">Plastic Bottle</div>
+<div id="food" draggable="true">Food Waste</div>
+
 </div>
+
+<br>
+
+<div style="display:flex;justify-content:center;gap:60px">
+
+<div id="recycleBin" class="bin">Recycle</div>
+<div id="organicBin" class="bin">Organic</div>
+
+</div>
+
+<p id="gameResult"></p>
 
 </section>
 
-<!-- GALLERY -->
+<section style="text-align:center;background:#e8f5e9">
+
+<h2 class="title">Environmental Chat Assistant</h2>
+
+<input id="userQuestion" placeholder="Ask about recycling, waste, compost">
+
+<button onclick="chatbot()">Ask</button>
+
+<p id="botAnswer"></p>
+
+</section>
 
 <section id="gallery">
 
@@ -337,14 +381,20 @@ padding:20px;
 <div class="gallery">
 
 <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
-
 <img src="https://images.unsplash.com/photo-1598514983318-2f64f8f4796c">
-
 <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b">
-
 <img src="https://images.unsplash.com/photo-1591197172062-c718f82aba20">
 
 </div>
+
+</section>
+
+<section style="text-align:center">
+
+<h2 class="title">Project Information</h2>
+
+<p><b>Developer:</b> Vedant Pandey</p>
+<p><b>Technologies:</b> HTML, CSS, JavaScript, Chart.js</p>
 
 </section>
 
@@ -360,7 +410,7 @@ padding:20px;
 
 AOS.init();
 
-/* Chart */
+/* CHART */
 
 new Chart(document.getElementById("chart"),{
 type:"bar",
@@ -373,7 +423,41 @@ data:[62,43,11,9]
 }
 });
 
-/* Waste Calculator */
+/* COUNTERS */
+
+function animateCounter(id,target){
+
+let count=0;
+
+let interval=setInterval(function(){
+
+count++;
+
+document.getElementById(id).innerHTML=count;
+
+if(count>=target){
+clearInterval(interval);
+}
+
+},30);
+
+}
+
+animateCounter("w1",62);
+animateCounter("w2",43);
+animateCounter("w3",11);
+animateCounter("w4",5);
+
+/* WASTE COUNTER */
+
+let waste=100000;
+
+setInterval(function(){
+waste+=5;
+document.getElementById("wasteCounter").innerHTML=waste;
+},1000);
+
+/* CALCULATOR */
 
 function calculateWaste(){
 
@@ -381,32 +465,43 @@ let people=document.getElementById("people").value;
 
 let waste=people*0.5;
 
-document.getElementById("result").innerHTML=
-
-"Your household produces about "+waste+" kg waste per day";
+document.getElementById("result").innerHTML="Your household produces about "+waste+" kg waste daily";
 
 }
 
-/* Quiz */
+/* QUIZ */
 
 function checkAnswer(ans){
 
 if(ans=="food"){
-
 document.getElementById("quizResult").innerHTML="Correct!";
-
-}
-
-else{
-
+}else{
 document.getElementById("quizResult").innerHTML="Wrong Answer";
+}
 
 }
+
+/* CHATBOT */
+
+function chatbot(){
+
+let q=document.getElementById("userQuestion").value.toLowerCase();
+
+let a="";
+
+if(q.includes("recycle")) a="Recycling converts waste into reusable materials.";
+
+else if(q.includes("compost")) a="Composting converts organic waste into fertilizer.";
+
+else if(q.includes("waste")) a="India generates over 62 million tonnes of waste annually.";
+
+else a="Ask about recycling, waste, or composting.";
+
+document.getElementById("botAnswer").innerHTML=a;
 
 }
 
 </script>
 
 </body>
-
 </html>
